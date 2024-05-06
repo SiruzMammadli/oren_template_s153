@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 40px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .avatar_wrapper {
+      position: relative;
+      .avatar {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+
+        img {
+          border-radius: 100%;
+        }
+        input {
+          display: none;
+        }
+      }
+
+      &:has(.avatar input:checked) {
+        .avatar_dropmenu {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      .avatar_dropmenu {
+        width: max-content;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 6px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 250ms;
+      }
+    }
+  }
+}
+main {
+  .contnenr {
+    width: 80%;
+    margin-inline: auto;
+
+    .faturedVideos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+
+      > div {
+        overflow: hidden;
+        border-radius: 8px;
+
+        .image {
+          height: 200px;
+          overflow: hidden;
+          position: relative;
+
+          > .clock {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: white;
+            background-color: #414346;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            translate: 8px 0;
+            transition-duration: 300ms;
+            transition-property: translate, opacity, visibility;
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          > .time_duration {
+            background-color: rgb(38 38 54 / 90%);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: white;
+            padding-inline: 6px;
+            border-radius: 4px;
+            font-size: 14px;
+          }
+
+          > img {
+            transition-duration: 300ms;
+            transition-property: scale;
+          }
+        }
+
+        &:hover {
+          > .image {
+            > img {
+              scale: 1.2;
+            }
+
+            > .clock {
+                translate: 0 0;
+                opacity: 1;
+                visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
